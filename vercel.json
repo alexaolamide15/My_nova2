@@ -5,8 +5,9 @@
       "maxDuration": 60
     }
   },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api" },
-    { "source": "/", "destination": "/api" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.ts" },
+    { "src": "/healthz", "dest": "/api/index.ts" },
+    { "src": "/(.*)", "dest": "/api/index.ts" }
   ]
 }
