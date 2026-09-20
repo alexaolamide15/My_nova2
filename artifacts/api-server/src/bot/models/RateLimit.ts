@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IRateLimit extends Document {
   userId: number;
@@ -17,4 +18,4 @@ const RateLimitSchema = new Schema<IRateLimit>(
 
 RateLimitSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 120 });
 
-export const RateLimit = mongoose.model<IRateLimit>("RateLimit", RateLimitSchema);
+export const RateLimit = createSupabaseModel<IRateLimit>("RateLimit");

@@ -41,8 +41,8 @@ const ALLOWED_ORIGINS = [
 
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow same-origin (no origin header) and Replit preview domains
-    if (!origin || ALLOWED_ORIGINS.some(o => origin.startsWith(o)) || origin.includes(".replit.") || origin.includes(".repl.co")) {
+    // Allow same-origin requests and explicitly configured Vercel origins.
+    if (!origin || ALLOWED_ORIGINS.some(o => origin === o || origin.startsWith(`${o}/`))) {
       cb(null, true);
     } else {
       cb(null, false);
