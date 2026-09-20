@@ -11,6 +11,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.116.0",
     "@workspace/api-zod": "workspace:*",
     "axios": "^1.16.0",
     "cors": "^2",

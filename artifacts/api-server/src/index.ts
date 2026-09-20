@@ -15,7 +15,8 @@ process.on("unhandledRejection", (reason) => {
 const REQUIRED_ENV: Record<string, string> = {
   PORT:               "Server port number",
   TELEGRAM_BOT_TOKEN: "Telegram bot token from @BotFather",
-  MONGODB_URI:        "MongoDB connection string",
+  SUPABASE_URL:       "Supabase project URL",
+  SUPABASE_SERVICE_ROLE_KEY: "Supabase server-side service role key",
 };
 
 const OPTIONAL_WARN_ENV: Record<string, string> = {
