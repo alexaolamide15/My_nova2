@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export type AnalyticsEvent =
   | "message"
@@ -79,4 +80,4 @@ const AnalyticsSchema = new Schema<IAnalytics>(
   { capped: { size: 50 * 1024 * 1024, max: 100_000 } }
 );
 
-export const Analytics = mongoose.model<IAnalytics>("Analytics", AnalyticsSchema);
+export const Analytics = createSupabaseModel<IAnalytics>("Analytics");

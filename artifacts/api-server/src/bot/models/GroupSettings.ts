@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IGroupSettings extends Document {
   chatId: number;
@@ -51,7 +52,4 @@ const GroupSettingsSchema = new Schema<IGroupSettings>(
   { timestamps: true }
 );
 
-export const GroupSettings = mongoose.model<IGroupSettings>(
-  "GroupSettings",
-  GroupSettingsSchema
-);
+export const GroupSettings = createSupabaseModel<IGroupSettings>("GroupSettings");

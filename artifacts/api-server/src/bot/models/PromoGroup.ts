@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IPromoGroup extends Document {
   title: string;
@@ -28,4 +29,4 @@ const PromoGroupSchema = new Schema<IPromoGroup>(
 PromoGroupSchema.index({ active: 1 });
 PromoGroupSchema.index({ addedBy: 1 });
 
-export const PromoGroup = mongoose.model<IPromoGroup>("PromoGroup", PromoGroupSchema);
+export const PromoGroup = createSupabaseModel<IPromoGroup>("PromoGroup");

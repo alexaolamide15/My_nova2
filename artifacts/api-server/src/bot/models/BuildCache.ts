@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IBuildCache extends Document {
   userId: number;
@@ -22,4 +23,4 @@ const BuildCacheSchema = new Schema<IBuildCache>({
 
 BuildCacheSchema.index({ savedAt: 1 }, { expireAfterSeconds: 2700 });
 
-export const BuildCacheModel = mongoose.model<IBuildCache>("BuildCache", BuildCacheSchema);
+export const BuildCacheModel = createSupabaseModel<IBuildCache>("BuildCache");

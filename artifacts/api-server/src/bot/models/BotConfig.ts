@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IModelEntry {
   id: string;
@@ -198,7 +199,7 @@ const BotConfigSchema = new Schema<IBotConfig>(
   { timestamps: true }
 );
 
-export const BotConfig = mongoose.model<IBotConfig>("BotConfig", BotConfigSchema);
+export const BotConfig = createSupabaseModel<IBotConfig>("BotConfig");
 
 const DEFAULT_CHAT_MODELS: IModelEntry[] = [
   { id: "meta-llama/llama-3.3-70b-instruct:free",               name: "Llama 3.3 70B — Best Quality",         active: true  },

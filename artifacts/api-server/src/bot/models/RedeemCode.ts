@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IRedeemCode extends Document {
   code: string;
@@ -51,8 +52,5 @@ RedeemCodeSchema.pre("save", function () {
   }
 });
 
-export const RedeemCode = mongoose.model<IRedeemCode>(
-  "RedeemCode",
-  RedeemCodeSchema
-);
+export const RedeemCode = createSupabaseModel<IRedeemCode>("RedeemCode");
 export { parseDuration };

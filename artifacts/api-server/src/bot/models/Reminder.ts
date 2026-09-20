@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IReminder extends Document {
   userId: number;
@@ -23,7 +24,7 @@ const ReminderSchema = new Schema<IReminder>(
 // Auto-delete fired reminders 30 days after they triggered
 ReminderSchema.index({ triggerAt: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60, partialFilterExpression: { sent: true } });
 
-export const Reminder = mongoose.model<IReminder>("Reminder", ReminderSchema);
+export const Reminder = createSupabaseModel<IReminder>("Reminder");
 
 export function parseDurationToMs(input: string): number | null {
   const s = input.trim().toLowerCase();

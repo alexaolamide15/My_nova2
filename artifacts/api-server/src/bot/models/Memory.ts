@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IMemory extends Document {
   userId: number;
@@ -26,4 +27,4 @@ const MemorySchema = new Schema<IMemory>(
 
 MemorySchema.index({ userId: 1, chatId: 1 }, { unique: true });
 
-export const Memory = mongoose.model<IMemory>("Memory", MemorySchema);
+export const Memory = createSupabaseModel<IMemory>("Memory");

@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IFeedback extends Document {
   userId: number;
@@ -20,4 +21,4 @@ const FeedbackSchema = new Schema<IFeedback>({
   createdAt: { type: Date, default: Date.now, index: true },
 });
 
-export const Feedback = mongoose.model<IFeedback>("Feedback", FeedbackSchema);
+export const Feedback = createSupabaseModel<IFeedback>("Feedback");

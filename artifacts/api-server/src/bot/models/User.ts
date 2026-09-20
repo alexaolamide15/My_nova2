@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Document, Schema } from "mongoose";
+import { createSupabaseModel } from "../../lib/supabase-model.js";
 
 export interface IUser extends Document {
   userId: number;
@@ -182,4 +183,4 @@ UserSchema.index({ "premium.active": 1 });           // filter premium users
 UserSchema.index({ referralCode: 1 }, { sparse: true }); // referral code lookups
 UserSchema.index({ "premium.active": 1, banned: 1 }); // broadcast filters
 
-export const User = mongoose.model<IUser>("User", UserSchema);
+export const User = createSupabaseModel<IUser>("User");
